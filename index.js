@@ -95,15 +95,6 @@ const generateReport = obj => {
     }
 }
 
-const reportGeneral = R.curry( (dir1, dir2) => generateReport(
-        getStatusDiffDir(
-            dir1,
-            dir2,
-            ['.sql']
-        )
-    )
-)
-
 const reportChangesList = R.curry( (dir1, dir2) => generateReport(
         getTrueDiffFilesList(
             dir1,
@@ -156,22 +147,19 @@ const file = 'Data\\dbo.AjusteAnual.StoredProcedure.sql'
 
 /*
     Dir
-        reportGeneral: Generate a report of all the files True and False Diff.
-        reportTrueList: Generate a list of all the files who´s have diff.
-        reportFalseList: Generate a list of all the files who´s haven´t diff.
-        reportTrueDetailsList: Generate a report detail of all the files who´s have diff.
+        reportChangesList: Generate a list of all the files who´s have diff.
+        reportNoChangeList: Generate a list of all the files who´s haven´t diff.
+        reportChangesDetailList: Generate a report detail of all the files who´s have diff.
 */
-// reportGeneral(dir1, dir2)
 // reportChangesList(dir1, dir2)
 reportNoChangeList(dir1, dir2)
 // reportChangesDetailList(dir1, dir2)
 
-// module.exports.diffX = {
-//     isDiff,
-//     getDiff,
-//     reportFile,
-//     reportGeneral,
-//     reportChangesList,
-//     reportNoChangeList,
-//     reportChangesDetailList
-// }
+module.exports.diffX = {
+    isDiff,
+    getDiff,
+    reportFile,
+    reportChangesList,
+    reportNoChangeList,
+    reportChangesDetailList
+}
